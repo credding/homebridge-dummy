@@ -1,23 +1,48 @@
 {
-  "name": "homebridge-dummy",
-  "version": "0.4.1",
-  "description": "Dummy switches for Homebridge: https://github.com/nfarina/homebridge",
-  "license": "ISC",
+  "name": "@credding/homebridge-dummy",
+  "version": "0.5.0",
+  "description": "Dummy switches for Homebridge: https://github.com/credding/homebridge",
   "keywords": [
     "homebridge-plugin"
   ],
+  "homepage": "https://github.com/credding/homebridge-dummy#README.md",
+  "bugs": {
+    "url": "https://github.com/credding/homebridge-dummy/issues"
+  },
+  "license": "ISC",
+  "files": [
+    "lib/",
+    "config.schema.json"
+  ],
+  "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/nfarina/homebridge-dummy.git"
+    "url": "git://github.com/credding/homebridge-dummy.git"
   },
-  "bugs": {
-    "url": "http://github.com/nfarina/homebridge-dummy/issues"
-  },
-  "engines": {
-    "node": ">=0.12.0",
-    "homebridge": ">=0.2.0"
+  "scripts": {
+    "clean": "rimraf \"./lib/*\"",
+    "lint": "eslint --max-warnings=0 \"./src/\" && prettier --check \"./src\"",
+    "compile": "tsc",
+    "build": "npm run clean && npm run lint && npm run compile",
+    "prepare": "npm run build"
   },
   "dependencies": {
+    "@credding/homebridge-jsx": "^0.2.2",
     "node-persist": "^2.1.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.0",
+    "@types/node-persist": "^3.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.11.0",
+    "@typescript-eslint/parser": "^4.11.0",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "homebridge": "^1.1.7",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.3"
+  },
+  "engines": {
+    "homebridge": ">=1.0.0"
   }
 }
